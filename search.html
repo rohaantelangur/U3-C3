@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Search results</title>
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <!-- Same navbar with same functionality  -->
+
+    <!-- Append results inside div with id "results"  -->
+    <div id="results"></div>
+    <!-- News divs will have class "news"  -->
+    <!-- <div class="news"></div> -->
+  </body>
+</html>
+<script type="module">
+  import { navbar , searchNews} from "./components/AllFunction.js"
+  document.getElementById("navbar").innerHTML=navbar()
+  // console.log(navbar());
+  let word1 = JSON.parse(localStorage.getItem("word"))
+  console.log(word1);
+
+  const append2 = (data) =>{
+    document.getElementById("results").innerHTML=null
+
+data.map(function(ele){
+    console.log(ele);
+
+    let div =document.createElement("div")
+    div.setAttribute("class","news")
+    let image = document.createComment("img")
+    image.src=ele.source.urlToImage
+    
+    let titale = document.createElement("h3")
+    titale.innerText=ele.title
+    let disc = document.createElement("p")
+    disc.innerHTML=ele.description
+    
+    div.append(image, titale, disc)
+    document.getElementById("results").append(div)
+})
+
+    
+}
+
+append2(word1)
+// console.log(word1);
+</script>
