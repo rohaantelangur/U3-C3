@@ -24,7 +24,7 @@ const getdata = async (query)=>{
         let result =  await res.json()
         console.log(result);
         // append2(result.articles)
-        localStorage.setItem("word",JSON.stringify(result))
+        localStorage.setItem("word",JSON.stringify(result.articles))
         window.location.href="search.html"
     } catch (error) {
         console.log(error);
